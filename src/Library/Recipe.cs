@@ -28,18 +28,16 @@ namespace Full_GRASP_And_SOLID.Library
 
         public string GetRecipeText()
         {
-            // Inicializo la variable en la cual voy a almacenar la cadena a retornar
-            StringBuilder recipeText = new StringBuilder($"Receta de {this.FinalProduct.Description}:\n");
+            StringBuilder stringBuilder = new StringBuilder($"Receta de {this.FinalProduct.Description}:");
 
-            // Itero para cada uno de los pasos
             foreach (Step step in this.steps)
             {
-                // Concateno la cadena correspondiente con la cadena del paso correspondiente
-                recipeText.AppendLine(step.GetStepText());
+                stringBuilder.Append($"\n{step.Quantity} de '{step.Input.Description}' " +
+                $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
 
-            // Retorno la cadena correspondiente transformado a string
-            return recipeText.ToString();
+            return stringBuilder.ToString();
         }
+
     }
 }
